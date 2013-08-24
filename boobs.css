@@ -2,6 +2,26 @@ img.right {
   float: right;
   margin: 0 0 0 2em;
 }
-#disqus_thread {
+.indented {
   margin: 1em 1em 0 1em;
+}
+
+#wrapper a {
+  color: #448;
+}
+#wrapper a:before {
+  background: url('images/link-pointer.png');
+  background-repeat: no-repeat;
+  width: 17px;
+  height: 11px;
+  margin: 3px 0 0 0;
+  display: block;
+  float: left;
+  content: ''
+}
+a {
+  color: #444;
+}
+#footer {
+  color: #222;
 }
