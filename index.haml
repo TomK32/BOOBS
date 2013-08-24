@@ -1,0 +1,106 @@
+!!!
+%html
+  %head
+    %meta{charset: "UTF-8"}
+    %title BOOBS Save the Day
+
+    %script{src: "http://olado.github.io/doT/doT.min.js"}
+    %script{src: "http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"}
+    %script{src: "Dedalus/src/dedalus.js"}
+    %script{src: "Dedalus/src/dedalus-web.js"}
+
+    %link{rel: "stylesheet", href: "Dedalus/src/html/themes/plain/story.css"}
+    %link{rel: "stylesheet", href: "boobs.css"}
+  
+  %body
+    #story
+
+      %initscript
+
+      %beforeEveryThing
+
+      %beforeEveryPageTurn
+
+      %beforeEveryParagraphShown
+
+      %afterEveryThing
+
+      %afterEveryPageTurn
+
+      %afterEveryParagraphShown
+
+      %title BOOBS Save the Day
+
+      %obj#teleporter{inventoryName: "Teleporter"}
+        %action#Examine
+          I won't teleport goats but everything else is just fine 
+
+      %page#intro
+        %p
+          Welcome to the alternative reality where a secret organization of hackers,
+          scientists, and utopists have invented a teleporter and decided to build a
+          operational base on the moon, waiting for their time to change the world.
+
+        %p
+          %em
+            As a sidenote: The author's first language is German, if you happen to find
+            gramatical errors feel free to keep them.
+        %p
+          %turn{to: 'moonbase'} Go on, start the story.
+          
+
+      %page#moonbase
+        %p
+          You've just been teleported from Earth into the base's big Hall and a woman
+          dressed in a white coat is ushering you off the teleporter platform.
+
+        %p
+          The Hall has a huge glass ceiling showing nothing but blackness and stars,
+          you can also see a slender tower, a lookout aparently and reachable by a
+          %turn{to: 'lookout'} spiral staircase.
+
+      %page#lookout
+        %img.right{src: 'images/lookout.jpg'}
+        You can see the Earth sneaking over the moon's horizon, all you see of Earth
+        is a part of the Pacific Ocean.
+
+        %p
+          %turn{to: 'moonbase'} Return to the Hall
+
+       
+    #wrapper
+      #title
+
+      #inventoryHostWrapper
+        %h2 Inventory
+        #inventoryHost
+      #host
+  #interactionHost
+
+  #undoStageHost
+
+  #footer
+    %a#undoHost{href: "#"} Undo
+    &bull;
+    %a#saveHost{href: "#"} Save
+    &bull;
+    %a#restoreHost{href: "#"} Restore
+    &bull;
+    %a#resetHost{href: "#"} Reset
+
+  :javascript
+    $(function () {
+        new DedalusWeb({
+            domSource         : $('#story'),
+            domTarget         : $('#host'),
+            titleTarget       : $('#title'),
+            inventoryTarget   : $('#inventoryHost'),
+            interactionTarget : $('#interactionHost'),
+            undoTarget        : $('#undoHost'),
+            undoStageTarget   : $('#undoStageHost'),
+            saveTarget        : $('#saveHost'),
+            restoreTarget     : $('#restoreHost'),
+            resetTarget       : $('#resetHost'),
+        });
+    });
+
