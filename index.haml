@@ -2,24 +2,48 @@
 %html
   %head
     %meta{charset: "UTF-8"}
-    %title BOOBS Save the Day
+    %title B.O.O.B.S. Saves the Day
 
     %script{src: "http://olado.github.io/doT/doT.min.js"}
     %script{src: "http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"}
     %script{src: "Dedalus/src/dedalus.js"}
     %script{src: "Dedalus/src/dedalus-web.js"}
 
-    %link{rel: "stylesheet", href: "Dedalus/src/html/themes/plain/story.css"}
+    %link{rel: "stylesheet", href: "Dedalus/src/html/themes/thewriter/story.css"}
     %link{rel: "stylesheet", href: "boobs.css"}
-  
   %body
     #story
+      %initscript
+        story.missions = {}
+      %title
+        B.O.O.B.S. Saves the Day
 
       %character#BOOBS
         %action{id: 'What boobs?'}
-          BOOBS, not boobs, is the name of the secret uptopian organization you've created.
-          Honestly we don't know what BOOBS actually stands for, you never told us.
-      %initscript
+          B.O.O.B.S., not boobs, is the name of the secret uptopian organization you've created.
+          Honestly we don't know what BorrOBS actually stands for, you never told us.
+
+      %character#miller
+        %action{id: 'What is this place?'}
+          Hello Devi, this is the
+          %interact{with: 'BOOBS'} B.O.O.B.S.
+          secrect Moon base.
+        %action{id: 'Who are you?'}
+          I'm Professor Angelica Miller, formerly a NASA rocket science.
+          But that's all become a bit redundent once you have a teleporter.
+          Now I'm head scientist up here.
+        %action{id: 'Why am I here?'}
+          %p
+            You are here because years ago you had this place created by
+            robots using the teleporter you invented. But tragically you
+            lost your memory on one of your trips home and it took us quite
+            some while to find you again. Your recent sex-change didn't
+            make our search easier.
+          %p
+            Don't worry, your memory will come back to you.
+          %p
+            In the meanwhile take this teleporter bracelet and go to Commander Kaur in the mission control.
+            {{ story.putInInventory('teleporter-bracelet'); }}
 
       %beforeEveryThing
 
@@ -33,11 +57,9 @@
 
       %afterEveryParagraphShown
 
-      %title BOOBS Save the Day
-
-      %obj#teleporter{inventoryName: "Teleporter"}
+      %obj#teleporter-bracelet{inventoryName: 'Teleporter bracelet'}
         %action#Examine
-          I won't teleport goats but everything else is just fine 
+          You thought those teleporters are sci-fi, well, not in this reality.
 
       %page#intro
         %p
@@ -49,13 +71,13 @@
           %em
             As a sidenote: The author's first language is German, if you happen to find
             gramatical errors feel free to keep them.
+      %page#start.first
         %p
-          %turn{to: 'moonbase'} Go on, start the story.
-          
+          %turn{to: 'hall'} Go on, start the story.
 
-      %page#moonbase
+      %page#hall
         %p
-          You've just been teleported from Earth into the base's big Hall and a
+          You've just been teleported from Earth into the moonbase's big Hall and a
           %interact{with: 'miller'} woman dressed in a white coat
           is ushering you off the teleporter platform.
 
@@ -63,6 +85,9 @@
           The Hall has a huge glass ceiling showing nothing but blackness and stars,
           you can also see a slender tower, a lookout aparently and reachable by a
           %turn{to: 'lookout'} spiral staircase.
+          On the far end you see a sort of
+          %turn{to: 'missionControl'} control center
+          with a lot of workstation and monitors.
 
       %page#lookout
         %img.right{src: 'images/lookout.jpg'}
@@ -70,7 +95,47 @@
         is a part of the Pacific Ocean.
 
         %p
-          %turn{to: 'moonbase'} Return to the Hall
+          Climb the stairs down
+          %turn{to: 'hall'} to the Hall
+
+      %page#missionControl
+        %p
+          The mission control is just a section of the big
+          %turn{to: 'hall'} Hall
+          give it a more overflowing look than it would have as normal room.
+          A large grid of displays depicts the earth with a few circles
+          around points of interest. In front of this stand a dozen work islands
+          with two to four computers each.
+        %p
+          Between the workplaces
+          %turn{to: 'kaurMissionControl'} Cmd Kaur
+          is walking, occassionally talking with one of those at the computers and
+          other instruments.
+
+      %page#kaurMissionControl
+        %img.right{src: 'images/character-kaur.jpg'}
+        %p Hello Devi. How are, still recovering from your memory loss?
+        {{? !story.isInInventory('teleporter-bracelet') }}
+        %p
+          You should go see
+          %turn{to: 'hall'} Professor Miller
+          in the Hall and get a teleporter bracelet from her. Come back after you got the gun and
+          I might have a mission for you.
+        {{??}}
+        %ul#missions
+          {{? !story.missions.manning }}
+          %li
+            %turn{to: 'manning'} Kidnap Chelsea Manning
+          {{?}}
+        {{?}}
+        %p
+          %turn{to: 'hall'} Return to the Hall
+
+      %page#militaryPrison
+      %page#london
+      %page#gulag
+      %page#rio
+      %page#tauCeti
 
     #wrapper
       #title
@@ -79,6 +144,7 @@
         %h2 Inventory
         #inventoryHost
       #host
+      .clear
       %hr
       .indented
         %p

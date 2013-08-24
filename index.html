@@ -2,25 +2,32 @@
 <html>
   <head>
     <meta charset='UTF-8'>
-    <title>BOOBS Save the Day</title>
+    <title>B.O.O.B.S. Saves the Day</title>
     <script src='http://olado.github.io/doT/doT.min.js'></script>
     <script src='http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js'></script>
     <script src='Dedalus/src/dedalus.js'></script>
     <script src='Dedalus/src/dedalus-web.js'></script>
-    <link href='Dedalus/src/html/themes/plain/story.css' rel='stylesheet'>
+    <link href='Dedalus/src/html/themes/thewriter/story.css' rel='stylesheet'>
     <link href='boobs.css' rel='stylesheet'>
   </head>
   <body>
     <div id='story'>
+      <initscript>
+        story.missions = {}
+      </initscript>
+      <title>
+        B.O.O.B.S. Saves the Day
+      </title>
       <character id='BOOBS'>
         <action id='What boobs?'>
-          BOOBS is the name of the secret uptopian organization you've created.
+          B.O.O.B.S., not boobs, is the name of the secret uptopian organization you've created.
+          Honestly we don't know what BorrOBS actually stands for, you never told us.
         </action>
       </character>
       <character id='miller'>
         <action id='What is this place?'>
           Hello Devi, this is the
-          <interact with='BOOBS'>BOOBS</interact>
+          <interact with='BOOBS'>B.O.O.B.S.</interact>
           secrect Moon base.
         </action>
         <action id='Who are you?'>
@@ -39,19 +46,21 @@
           <p>
             Don't worry, your memory will come back to you.
           </p>
+          <p>
+            In the meanwhile take this teleporter bracelet and go to Commander Kaur in the mission control.
+            {{ story.putInInventory('teleporter-bracelet'); }}
+          </p>
         </action>
       </character>
-      <initscript></initscript>
       <beforeEveryThing></beforeEveryThing>
       <beforeEveryPageTurn></beforeEveryPageTurn>
       <beforeEveryParagraphShown></beforeEveryParagraphShown>
       <afterEveryThing></afterEveryThing>
       <afterEveryPageTurn></afterEveryPageTurn>
       <afterEveryParagraphShown></afterEveryParagraphShown>
-      <title>BOOBS Save the Day</title>
-      <obj id='teleporter' inventoryName='Teleporter'>
+      <obj id='teleporter-bracelet' inventoryName='Teleporter bracelet'>
         <action id='Examine'>
-          I won't teleport goats but everything else is just fine
+          You thought those teleporters are sci-fi, well, not in this reality.
         </action>
       </obj>
       <page id='intro'>
@@ -66,13 +75,15 @@
             gramatical errors feel free to keep them.
           </em>
         </p>
+      </page>
+      <page class='first' id='start'>
         <p>
-          <turn to='moonbase'>Go on, start the story.</turn>
+          <turn to='hall'>Go on, start the story.</turn>
         </p>
       </page>
-      <page id='moonbase'>
+      <page id='hall'>
         <p>
-          You've just been teleported from Earth into the base's big Hall and a
+          You've just been teleported from Earth into the moonbase's big Hall and a
           <interact with='miller'>woman dressed in a white coat</interact>
           is ushering you off the teleporter platform.
         </p>
@@ -80,6 +91,9 @@
           The Hall has a huge glass ceiling showing nothing but blackness and stars,
           you can also see a slender tower, a lookout aparently and reachable by a
           <turn to='lookout'>spiral staircase.</turn>
+          On the far end you see a sort of
+          <turn to='missionControl'>control center</turn>
+          with a lot of workstation and monitors.
         </p>
       </page>
       <page id='lookout'>
@@ -87,9 +101,54 @@
         You can see the Earth sneaking over the moon's horizon, all you see of Earth
         is a part of the Pacific Ocean.
         <p>
-          <turn to='moonbase'>Return to the Hall</turn>
+          Climb the stairs down
+          <turn to='hall'>to the Hall</turn>
         </p>
       </page>
+      <page id='missionControl'>
+        <p>
+          The mission control is just a section of the big
+          <turn to='hall'>Hall</turn>
+          give it a more overflowing look than it would have as normal room.
+          A large grid of displays depicts the earth with a few circles
+          around points of interest. In front of this stand a dozen work islands
+          with two to four computers each.
+        </p>
+        <p>
+          Between the workplaces
+          <turn to='kaurMissionControl'>Cmd Kaur</turn>
+          is walking, occassionally talking with one of those at the computers and
+          other instruments.
+        </p>
+      </page>
+      <page id='kaurMissionControl'>
+        <img class='right' src='images/character-kaur.jpg'>
+        <p>Hello Devi. How are, still recovering from your memory loss?</p>
+        {{? !story.isInInventory('teleporter-bracelet') }}
+        <p>
+          You should go see
+          <turn to='hall'>Professor Miller</turn>
+          in the Hall and get a teleporter bracelet from her. Come back after you got the gun and
+          I might have a mission for you.
+        </p>
+        {{??}}
+        <ul id='missions'>
+          {{? !story.missions.manning }}
+          <li>
+            <turn to='manning'>Kidnap Chelsea Manning</turn>
+          </li>
+          {{?}}
+        </ul>
+        {{?}}
+        <p>
+          <turn to='hall'>Return to the Hall</turn>
+        </p>
+      </page>
+      <page id='militaryPrison'></page>
+      <page id='london'></page>
+      <page id='gulag'></page>
+      <page id='rio'></page>
+      <page id='tauCeti'></page>
     </div>
     <div id='wrapper'>
       <div id='title'></div>
@@ -98,6 +157,7 @@
         <div id='inventoryHost'></div>
       </div>
       <div id='host'></div>
+      <div class='clear'></div>
       <hr>
       <div class='indented'>
         <p>
