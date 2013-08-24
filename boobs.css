@@ -2,3 +2,6 @@ img.right {
   float: right;
   margin: 0 0 0 2em;
 }
+#disqus_thread {
+  margin: 1em 1em 0 1em;
+}

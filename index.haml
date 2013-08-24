@@ -19,25 +19,6 @@
         %action{id: 'What boobs?'}
           BOOBS, not boobs, is the name of the secret uptopian organization you've created.
           Honestly we don't know what BOOBS actually stands for, you never told us.
-      %character#miller
-        %action{id: 'What is this place?'}
-          Hello Devi, this is the
-          %interact{with: 'BOOBS'} BOOBS
-          secrect Moon base.
-        %action{id: 'Who are you?'}
-          I'm Professor Angelica Miller, formerly a NASA rocket science.
-          But that's all become a bit redundent once you have a teleporter.
-          Now I'm head scientist up here.
-        %action{id: 'Why am I here?'}
-          %p
-            You are here because years ago you had this place created by
-            robots using the teleporter you invented. But tragically you
-            lost your memory on one of your trips home and it took us quite
-            some while to find you again. Your recent sex-change didn't
-            make our search easier.
-          %p
-            Don't worry, your memory will come back to you.
-
       %initscript
 
       %beforeEveryThing
@@ -98,6 +79,24 @@
         %h2 Inventory
         #inventoryHost
       #host
+      %hr
+      :plain
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+            var disqus_shortname = 'boobssavestheday'; // required: replace example with your forum shortname
+            /* * * DON'T EDIT BELOW THIS LINE * * */
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+        <p>
+          <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+        </p>
+
   #interactionHost
 
   #undoStageHost
