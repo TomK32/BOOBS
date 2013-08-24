@@ -1,3 +1,6 @@
+html, body {
+  overflow: auto;
+}
 img.right {
   float: right;
   margin: 0 0 0 2em;
@@ -48,4 +51,11 @@ a {
 
 .clear {
   clear: both;
+}
+
+dl.dialog dd {
+  margin: 0 0 0 5px;
+}
+dl.dialog dt {
+  font-weight: bold;
 }

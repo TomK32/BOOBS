@@ -40,8 +40,8 @@
             You are here because years ago you had this place created by
             robots using the teleporter you invented. But tragically you
             lost your memory on one of your trips home and it took us quite
-            some while to find you again. Your recent sex-change didn't
-            make our search easier.
+            some while to find you again. And your sex-change before you lost your memory
+            didn't make our search easier.
           </p>
           <p>
             Don't worry, your memory will come back to you.
@@ -144,7 +144,103 @@
           <turn to='hall'>Return to the Hall</turn>
         </p>
       </page>
-      <page id='militaryPrison'></page>
+      <page id='manning'>
+        Okay Devi, we'll go over to the stationary
+        <show paragraph='howTeleportingWorks'>teleporters.</show>
+        Two of our privates will join us, I can't send you alone on your first mission.
+        <paragraph id='howTeleportingWorks'>
+          Very easy bla bla bla.
+          <p>
+            In order for a safe teleport we need to land in a room that is most likely empty.
+            That's the reason why we won't teleport directly into Manning's cell but outside of it.
+            We'll have to crack the lock but Private Roldóttir is an expert for that.
+          </p>
+          <p>
+            <turn to='militaryPrison'>Okay, let's teleport.</turn>
+          </p>
+        </paragraph>
+      </page>
+      <page id='militaryPrison'>
+        <character id='rememberingProfMiller'>
+          <action id='Something about laser guns'>
+            I think she mentioned laser guns.
+            <br>
+            <em>I'm sorry dear,</em>
+            Commander Kaur interrupts,
+            <em>we don't have any guns at all.</em>
+          </action>
+          <action id='My past before my memory loss'>
+            She said I had a sex-change before my memory loss. I have the XY chromosoms we need for the lock!
+            <turn to='militaryPrisonCell'>Let's open this door!</turn>
+          </action>
+        </character>
+        <p>
+          Your second ever, well, as far as you can remember, teleport felt a lot easier
+          than the last one. Perhaps it's just using the teleporter pads instead of the
+          bracelet that makes the jumps feel more comfortable.
+        </p>
+        <p>
+          You are in a darkish, narrow corridor. You landed at what you consider the far end
+          of the corridor, right in front of a door. Cmd Kaur knocks on the door and from
+          inside the distinct but faint voice of Chelsa Manning asks who's there.
+          <em>Yup, that's the right one. Hello Chelsea Manning, we're here to get you out.</em>
+        </p>
+        <p>
+          Private Roldóttir is already having a look at the electronic lock.
+          <em>
+            Commander, there's a little problem, it's not the lock I expected.
+            They installed an additional electronic lock, specifically for male prisons,
+            the only lock on the planet that's doing super fast genetic tests.
+            Originally designed for Mormon households, adapted by a few states
+            to decrease bribery and prostitution in county prisons...
+          </em>
+          <em>
+            Oh I see, I'm boring you with details.
+            In short: We need someone with XY chromosoms to open this door.
+          </em>
+          <show paragraph='xy'>The three of us, we are all women. What now?</show>
+        </p>
+        <paragraph id='xy'>
+          <dl class='dialog'>
+            <dt>Cmd Kaur</dt>
+            <dd>We couldn't just break through the door?</dd>
+            <dt>Private Roldóttir</dt>
+            <dd>No it's to heavy</dd>
+            <dt>Devi</dt>
+            <dd>How about teleporting?</dd>
+            <dt>Cmd Kaur</dt>
+            <dd>
+              No, our bracelets have only enough energy for one teleport, we do have a spare one,
+              but that's for Chelsea.
+            </dd>
+            <dt>Devi</dt>
+            <dd>
+              Oh wait a second, I remember
+              <interact with='rememberingProfMiller'>something Professor Miller said to me!</interact>
+            </dd>
+          </dl>
+        </paragraph>
+      </page>
+      <page id='militaryPrisonCell'>
+        The air inside the cell is surprisingly fresh, Manning standin at the far end
+        of the small cell, looking confused about the three female "visitors".
+        <dl>
+          <dt>Manning</dt>
+          <dd>Who are you? Why are you in here?</dd>
+          <dt>Cmd Kaur</dt>
+          <dd>We are here to rescue you, take this bracelet and put it around your wrist</dd>
+        </dl>
+        She shows him her own bracelet to give him a bit more security about the whole
+        situation and her request. While he's it putting, Roldóttir grabs the hands of
+        Devi and the Commander, Devi remember this from today's first teleport, searching
+        Kaur's face for a nod and as Manning is finished they grab her hands and
+        Manning's question
+        <em>And what's next?</em>
+        fades in the empty cell as they teleport to the moon.
+        <p>
+          <turn to='hall'>Continue reading…</turn>
+        </p>
+      </page>
       <page id='london'></page>
       <page id='gulag'></page>
       <page id='rio'></page>
