@@ -18,7 +18,7 @@
         story.missions = {}
         story.seen = {}
       %title
-        B.O.O.B.S. Saves the Day (r14)
+        B.O.O.B.S. Saves the Day (r15)
       %character#miller
         %action{id: 'What is this place?'}
           Hello Devi, this is the
@@ -33,7 +33,7 @@
           robots using the teleporter you invented. But tragically you
           lost your memory on one of your trips home and it took us quite
           some while to find you again. And your
-          %show{paragraph: 'sexchange'} sex-change
+          %show{paragraph: 'sex-change'} sex-change
           before you lost your memory
           didn't make our search easier.
           %br
@@ -52,8 +52,9 @@
             Oh how I miss the old rocket science, they always allowed me to do the count down:
             10 seconds, 9, 8...
           Her mind seems to drift off, you better change the topic quick.
-        %paragraph#sexchange
-          %em Wait, I had a sex change?
+        %paragraph#sex-change
+          {{ seen('sex-change'); }}
+          %em Wait, I had a sex-change?
           you ask the professor.
           %em Yes, and if you managed to forget that, it must have been an excellent procedure.
           she replies.
@@ -190,8 +191,13 @@
             Commander Kaur interrupts,
             %em we don't have any guns at all.
           %action{id: 'My past before my memory loss'}
+            <when>hasSeen('sex-change')</when>
             She said I had a sex-change before my memory loss. I have the XY chromosoms we need for the lock!
             %turn{to: 'militaryPrisonCell'} Let's open this door!
+          %action{id: "The force is strong"}
+            <when>!hasSeen('sex-change')</when>
+            I think she said the force is strong with me, let's try
+            %turn{to: 'endPrison'} break that dooor.
         %p
           Your second ever, well, as far as you can remember, teleport felt a lot easier
           than the last one. Perhaps it's just using the teleporter pads instead of the
@@ -215,6 +221,11 @@
             Oh I see, I'm boring you with details.
             In short: We need someone with XY chromosoms to open this door.
           %turn{to: 'gettingIntoTheCell'} The three of us, we are all women. What now?
+      %page#endPrison
+        The three of you slam against the door, hit the electronic locks but to now prevail.
+        In the process you damage your teleporter-bracelet and it gives a strong electric
+        hit to everyone. You lose.
+        {{ story.endGame(); }}
       %page#gettingIntoTheCell
         %dl.dialog
           %dt Cmd Kaur
@@ -391,7 +402,6 @@
             restoreTarget     : $('#restoreHost'),
             resetTarget       : $('#resetHost'),
         });
-        $('#restoreHost').click();
     });
     function seen(what) {
       if(!story.seen) { story.seen = {}; }

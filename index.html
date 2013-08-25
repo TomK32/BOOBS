@@ -18,7 +18,7 @@
         story.seen = {}
       </initscript>
       <title>
-        B.O.O.B.S. Saves the Day (r14)
+        B.O.O.B.S. Saves the Day (r15)
       </title>
       <character id='miller'>
         <action id='What is this place?'>
@@ -36,7 +36,7 @@
           robots using the teleporter you invented. But tragically you
           lost your memory on one of your trips home and it took us quite
           some while to find you again. And your
-          <show paragraph='sexchange'>sex-change</show>
+          <show paragraph='sex-change'>sex-change</show>
           before you lost your memory
           didn't make our search easier.
           <br>
@@ -58,8 +58,9 @@
           </em>
           Her mind seems to drift off, you better change the topic quick.
         </paragraph>
-        <paragraph id='sexchange'>
-          <em>Wait, I had a sex change?</em>
+        <paragraph id='sex-change'>
+          {{ seen('sex-change'); }}
+          <em>Wait, I had a sex-change?</em>
           you ask the professor.
           <em>Yes, and if you managed to forget that, it must have been an excellent procedure.</em>
           she replies.
@@ -204,8 +205,14 @@
             <em>we don't have any guns at all.</em>
           </action>
           <action id='My past before my memory loss'>
+            <when>hasSeen('sex-change')</when>
             She said I had a sex-change before my memory loss. I have the XY chromosoms we need for the lock!
             <turn to='militaryPrisonCell'>Let's open this door!</turn>
+          </action>
+          <action id='The force is strong'>
+            <when>!hasSeen('sex-change')</when>
+            I think she said the force is strong with me, let's try
+            <turn to='endPrison'>break that dooor.</turn>
           </action>
         </character>
         <p>
@@ -236,6 +243,12 @@
           </em>
           <turn to='gettingIntoTheCell'>The three of us, we are all women. What now?</turn>
         </paragraph>
+      </page>
+      <page id='endPrison'>
+        The three of you slam against the door, hit the electronic locks but to now prevail.
+        In the process you damage your teleporter-bracelet and it gives a strong electric
+        hit to everyone. You lose.
+        {{ story.endGame(); }}
       </page>
       <page id='gettingIntoTheCell'>
         <dl class='dialog'>
@@ -430,7 +443,6 @@
             restoreTarget     : $('#restoreHost'),
             resetTarget       : $('#resetHost'),
         });
-        $('#restoreHost').click();
     });
     function seen(what) {
       if(!story.seen) { story.seen = {}; }
