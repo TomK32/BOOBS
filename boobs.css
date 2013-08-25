@@ -9,6 +9,9 @@ img.right {
   margin: 1em 1em 0 1em;
 }
 
+body {
+  line-height: 115%;
+}
 #wrapper a {
   color: #448;
 }
@@ -16,8 +19,7 @@ img.right {
   background: url('images/link-pointer.png');
   background-repeat: no-repeat;
   width: 17px;
-  height: 11px;
-  margin: 3px 0 0 0;
+  height: 12px;
   display: inline-block;
   white-space: nowrap;
   content: ''

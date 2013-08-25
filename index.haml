@@ -18,54 +18,7 @@
         story.missions = {}
         story.seen = {}
       %title
-        B.O.O.B.S. Saves the Day (r18)
-      %character#miller
-        %action{id: 'What is this place?'}
-          Hello Devi, this is the
-          %show{paragraph: 'BOOBS'} B.O.O.B.S.
-          secrect Moon base.
-        %action{id: 'Who are you?'}
-          I'm Professor Angelica Miller, B.O.O.B.S.' chief scientic officer,
-          formerly a
-          %show{paragraph: 'rocketscience'} NASA rocket science.
-        %action{id: 'Why am I here?'}
-          You are here because years ago you had this place created by
-          robots using the teleporter you invented. But tragically you
-          lost your memory on one of your trips home and it took us quite
-          some while to find you again. And your
-          %show{paragraph: 'sex-change'} sex-change
-          before you lost your memory
-          didn't make our search easier.
-          %br
-          Don't worry, your memory will come back to you.
-          %br
-          In the meanwhile take this teleporter bracelet and go to Commander Kaur in the mission control.
-          {{ story.putInInventory('teleporter-bracelet'); }}
-        %paragraph#rocketscience
-          Slightly impressed about the first rocket scienist you meet in your life, you ask
-          %em I was teleported here, so where's the space rockets?
-          %em
-            Well, we don't have any. Looks like I took the wrong career path, but not all my
-            knowledge has become redundant, I'd like to think of myself as a hands-on
-            space scientist. That was before I started to hate this low gravity shit.
-            %br
-            Oh how I miss the old rocket science, they always allowed me to do the count down:
-            10 seconds, 9, 8...
-          Her mind seems to drift off, you better change the topic quick.
-        %paragraph#sex-change
-          {{ seen('sex-change'); }}
-          %em Wait, I had a sex-change?
-          you ask the professor.
-          %em Yes, and if you managed to forget that, it must have been an excellent procedure.
-          she replies.
-        %paragraph#BOOBS
-          %em What boobs?
-          you ask the professor, with a tiny grin in the back of your mind.
-          %em
-            B.O.O.B.S., not boobs, is the name of the secret uptopian organization you've created.
-            Honestly we don't know what B.O.O.B.S. actually stands for, you never told us.
-            And stop grinning about your own terrible jokes.
-
+        B.O.O.B.S. Saves the Day (r19)
       %beforeEveryThing
         stopSound(story.backgroundSound);
 
@@ -84,28 +37,94 @@
           You thought those teleporters are sci-fi, well, not in this reality.
 
       %page#intro
-        %p
-          Welcome to the alternative reality where a secret organization of hackers,
-          scientists, and utopists have invented a teleporter and decided to build a
-          operational base on the moon, waiting for their time to change the world.
+        Welcome to the alternative reality where a secret organization of hackers,
+        scientists, and utopists have invented a teleporter and decided to build a
+        operational base on the moon, waiting for their time to change the world.
 
-        %p
-          %em As a sidenote:
-          The author's first language is German, if you happen to find
-          gramatical errors feel free to keep them.
-          %br
-          The game is first a submission to
-          %a{href: 'http://ludumdare.com/compo'} Ludum Dare
-          compo. The theme was 10 seconds and you'll
-          find it referenced within the story. The game is also a submission to the
-          %a{href: 'http://theboobjam.com/'} Boob Jam
-          and yes, it's a text adventure.
+        %h3 Technical notes
+        The author's first language is German, if you happen to find
+        gramatical errors feel free to keep them.
+        %br
+        The game is first a submission to
+        %a{href: 'http://ludumdare.com/compo'} Ludum Dare
+        compo. The theme was 10 seconds and you'll
+        find it referenced within the story. The game is also a submission to the
+        %a{href: 'http://theboobjam.com/'} Boob Jam
+        and yes, it's a text adventure.
+        %br
+        Overall, the scope of the story is no more than 1400 words, far less than
+        I had hoped for but it has only one loose end where the next mission would
+        start and I plan to write more of those.
+        %br
+        One thing I had in mind was some sort of progress bar when you
+        find out bits about your past and regain your memory.
+
+        %h3 Credits
+        %a{href: 'https://github.com/pistacchio/Dedalus'} Dedalus
+        the engine,
+        %a{href: 'http://howlerjs.com'} Howler
+        to manage the sounds.
+        %br
+        Sounds came from
+        %a{href: 'http://www.freesound.org/people/reacthor/sounds/130248/'} reacthor
+        ,
+        %a{href: 'http://www.freesound.org/people/loljames/sounds/116342/'} loljames
+        and myself. Audacity has been used to modify the sounds.
+
 
       %page#start.first
-        %p
-          %turn{to: 'hall'} Go on, start the story.
+        %h3 Start the game
+        Go on,
+        %turn{to: 'hall'} start the story.
 
       %page#hall
+        %character#miller
+          %action{id: 'What is this place?'}
+            Hello Devi, this is the
+            %show{paragraph: 'BOOBS'} B.O.O.B.S.
+            secrect Moon base.
+          %action{id: 'Who are you?'}
+            I'm Professor Angelica Miller, B.O.O.B.S.' chief scientic officer,
+            formerly a
+            %show{paragraph: 'rocketscience'} NASA rocket science.
+          %action{id: 'Why am I here?'}
+            You are here because years ago you had this place created by
+            robots using the teleporter you invented. But tragically you
+            lost your memory on one of your trips home and it took us quite
+            some while to find you again. And your
+            %show{paragraph: 'sex-change'} sex-change
+            before you lost your memory
+            didn't make our search easier.
+            %br
+            Don't worry, your memory will come back to you.
+            %br
+            In the meanwhile take this teleporter bracelet and go to Commander Kaur in the mission control.
+            {{ story.putInInventory('teleporter-bracelet'); }}
+          %paragraph#rocketscience
+            Slightly impressed about the first rocket scienist you meet in your life, you ask
+            %em I was teleported here, so where's the space rockets?
+            %em
+              Well, we don't have any. Looks like I took the wrong career path, but not all my
+              knowledge has become redundant, I'd like to think of myself as a hands-on
+              space scientist. That was before I started to hate this low gravity shit.
+              %br
+              Oh how I miss the old rocket science, they always allowed me to do the count down:
+              10 seconds, 9, 8...
+            Her mind seems to drift off, you better change the topic quick.
+          %paragraph#sex-change
+            {{ seen('sex-change'); }}
+            %em Wait, I had a sex-change?
+            you ask the professor.
+            %em Yes, and if you managed to forget that, it must have been an excellent procedure.
+            she replies.
+          %paragraph#BOOBS
+            %em What boobs?
+            you ask the professor, with a tiny grin in the back of your mind.
+            %em
+              B.O.O.B.S., not boobs, is the name of the secret uptopian organization you've created.
+              Honestly we don't know what B.O.O.B.S. actually stands for, you never told us.
+              And stop grinning about your own terrible jokes.
+
         %p
           {{ playBackgroundSound('hall'); }}
           {{? !hasSeen('hall') }}

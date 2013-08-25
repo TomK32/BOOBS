@@ -18,63 +18,8 @@
         story.seen = {}
       </initscript>
       <title>
-        B.O.O.B.S. Saves the Day (r18)
+        B.O.O.B.S. Saves the Day (r19)
       </title>
-      <character id='miller'>
-        <action id='What is this place?'>
-          Hello Devi, this is the
-          <show paragraph='BOOBS'>B.O.O.B.S.</show>
-          secrect Moon base.
-        </action>
-        <action id='Who are you?'>
-          I'm Professor Angelica Miller, B.O.O.B.S.' chief scientic officer,
-          formerly a
-          <show paragraph='rocketscience'>NASA rocket science.</show>
-        </action>
-        <action id='Why am I here?'>
-          You are here because years ago you had this place created by
-          robots using the teleporter you invented. But tragically you
-          lost your memory on one of your trips home and it took us quite
-          some while to find you again. And your
-          <show paragraph='sex-change'>sex-change</show>
-          before you lost your memory
-          didn't make our search easier.
-          <br>
-          Don't worry, your memory will come back to you.
-          <br>
-          In the meanwhile take this teleporter bracelet and go to Commander Kaur in the mission control.
-          {{ story.putInInventory('teleporter-bracelet'); }}
-        </action>
-        <paragraph id='rocketscience'>
-          Slightly impressed about the first rocket scienist you meet in your life, you ask
-          <em>I was teleported here, so where's the space rockets?</em>
-          <em>
-            Well, we don't have any. Looks like I took the wrong career path, but not all my
-            knowledge has become redundant, I'd like to think of myself as a hands-on
-            space scientist. That was before I started to hate this low gravity shit.
-            <br>
-            Oh how I miss the old rocket science, they always allowed me to do the count down:
-            10 seconds, 9, 8...
-          </em>
-          Her mind seems to drift off, you better change the topic quick.
-        </paragraph>
-        <paragraph id='sex-change'>
-          {{ seen('sex-change'); }}
-          <em>Wait, I had a sex-change?</em>
-          you ask the professor.
-          <em>Yes, and if you managed to forget that, it must have been an excellent procedure.</em>
-          she replies.
-        </paragraph>
-        <paragraph id='BOOBS'>
-          <em>What boobs?</em>
-          you ask the professor, with a tiny grin in the back of your mind.
-          <em>
-            B.O.O.B.S., not boobs, is the name of the secret uptopian organization you've created.
-            Honestly we don't know what B.O.O.B.S. actually stands for, you never told us.
-            And stop grinning about your own terrible jokes.
-          </em>
-        </paragraph>
-      </character>
       <beforeEveryThing>
         stopSound(story.backgroundSound);
       </beforeEveryThing>
@@ -89,30 +34,99 @@
         </action>
       </obj>
       <page id='intro'>
-        <p>
-          Welcome to the alternative reality where a secret organization of hackers,
-          scientists, and utopists have invented a teleporter and decided to build a
-          operational base on the moon, waiting for their time to change the world.
-        </p>
-        <p>
-          <em>As a sidenote:</em>
-          The author's first language is German, if you happen to find
-          gramatical errors feel free to keep them.
-          <br>
-          The game is first a submission to
-          <a href='http://ludumdare.com/compo'>Ludum Dare</a>
-          compo. The theme was 10 seconds and you'll
-          find it referenced within the story. The game is also a submission to the
-          <a href='http://theboobjam.com/'>Boob Jam</a>
-          and yes, it's a text adventure.
-        </p>
+        Welcome to the alternative reality where a secret organization of hackers,
+        scientists, and utopists have invented a teleporter and decided to build a
+        operational base on the moon, waiting for their time to change the world.
+        <h3>Technical notes</h3>
+        The author's first language is German, if you happen to find
+        gramatical errors feel free to keep them.
+        <br>
+        The game is first a submission to
+        <a href='http://ludumdare.com/compo'>Ludum Dare</a>
+        compo. The theme was 10 seconds and you'll
+        find it referenced within the story. The game is also a submission to the
+        <a href='http://theboobjam.com/'>Boob Jam</a>
+        and yes, it's a text adventure.
+        <br>
+        Overall, the scope of the story is no more than 1400 words, far less than
+        I had hoped for but it has only one loose end where the next mission would
+        start and I plan to write more of those.
+        <br>
+        One thing I had in mind was some sort of progress bar when you
+        find out bits about your past and regain your memory.
+        <h3>Credits</h3>
+        <a href='https://github.com/pistacchio/Dedalus'>Dedalus</a>
+        the engine,
+        <a href='http://howlerjs.com'>Howler</a>
+        to manage the sounds.
+        <br>
+        Sounds came from
+        <a href='http://www.freesound.org/people/reacthor/sounds/130248/'>reacthor</a>
+        ,
+        <a href='http://www.freesound.org/people/loljames/sounds/116342/'>loljames</a>
+        and myself. Audacity has been used to modify the sounds.
       </page>
       <page class='first' id='start'>
-        <p>
-          <turn to='hall'>Go on, start the story.</turn>
-        </p>
+        <h3>Start the game</h3>
+        Go on,
+        <turn to='hall'>start the story.</turn>
       </page>
       <page id='hall'>
+        <character id='miller'>
+          <action id='What is this place?'>
+            Hello Devi, this is the
+            <show paragraph='BOOBS'>B.O.O.B.S.</show>
+            secrect Moon base.
+          </action>
+          <action id='Who are you?'>
+            I'm Professor Angelica Miller, B.O.O.B.S.' chief scientic officer,
+            formerly a
+            <show paragraph='rocketscience'>NASA rocket science.</show>
+          </action>
+          <action id='Why am I here?'>
+            You are here because years ago you had this place created by
+            robots using the teleporter you invented. But tragically you
+            lost your memory on one of your trips home and it took us quite
+            some while to find you again. And your
+            <show paragraph='sex-change'>sex-change</show>
+            before you lost your memory
+            didn't make our search easier.
+            <br>
+            Don't worry, your memory will come back to you.
+            <br>
+            In the meanwhile take this teleporter bracelet and go to Commander Kaur in the mission control.
+            {{ story.putInInventory('teleporter-bracelet'); }}
+          </action>
+          <paragraph id='rocketscience'>
+            Slightly impressed about the first rocket scienist you meet in your life, you ask
+            <em>I was teleported here, so where's the space rockets?</em>
+            <em>
+              Well, we don't have any. Looks like I took the wrong career path, but not all my
+              knowledge has become redundant, I'd like to think of myself as a hands-on
+              space scientist. That was before I started to hate this low gravity shit.
+              <br>
+              Oh how I miss the old rocket science, they always allowed me to do the count down:
+              10 seconds, 9, 8...
+            </em>
+            Her mind seems to drift off, you better change the topic quick.
+          </paragraph>
+          <paragraph id='sex-change'>
+            {{ seen('sex-change'); }}
+            <em>Wait, I had a sex-change?</em>
+            you ask the professor.
+            <em>Yes, and if you managed to forget that, it must have been an excellent procedure.</em>
+            she replies.
+          </paragraph>
+          <paragraph id='BOOBS'>
+            <em>What boobs?</em>
+            you ask the professor, with a tiny grin in the back of your mind.
+            <em>
+              B.O.O.B.S., not boobs, is the name of the secret uptopian organization you've created.
+              Honestly we don't know what B.O.O.B.S. actually stands for, you never told us.
+              And stop grinning about your own terrible jokes.
+            </em>
+          </paragraph>
+        </character>
         <p>
           {{ playBackgroundSound('hall'); }}
           {{? !hasSeen('hall') }}
