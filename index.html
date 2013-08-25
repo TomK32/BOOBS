@@ -18,7 +18,7 @@
         story.seen = {}
       </initscript>
       <title>
-        B.O.O.B.S. Saves the Day (r16)
+        B.O.O.B.S. Saves the Day (r17)
       </title>
       <character id='miller'>
         <action id='What is this place?'>
@@ -75,7 +75,9 @@
           </em>
         </paragraph>
       </character>
-      <beforeEveryThing></beforeEveryThing>
+      <beforeEveryThing>
+        stopSound(story.backgroundSound);
+      </beforeEveryThing>
       <beforeEveryPageTurn></beforeEveryPageTurn>
       <beforeEveryParagraphShown></beforeEveryParagraphShown>
       <afterEveryThing></afterEveryThing>
@@ -112,7 +114,7 @@
       </page>
       <page id='hall'>
         <p>
-          {{ stopSound('static'); }}
+          {{ playBackgroundSound('hall'); }}
           {{? !hasSeen('hall') }}
           {{ seen('hall'); }}
           {{ playSound('teleporter'); }}
@@ -132,10 +134,14 @@
           On the far end you see a sort of
           <turn to='missionControl'>control center</turn>
           with a lot of workstation and monitors.
+          {{? hasSeen('canteen') }}
+          On the left there's the door to the
+          <turn to='canteen'>canteen.</turn>
+          {{?}}
         </p>
       </page>
       <page id='lookout'>
-        {{ playSound('static', {loop: true}); }}
+        {{ playBackgroundSound('static'); }}
         You can see the Earth sneaking over the moon's horizon, all you see of Earth
         is a part of the Pacific Ocean.
         <img src='images/lookout.jpg' width='500px'>
@@ -176,6 +182,9 @@
             <turn to='manning'>Kidnap Chelsea Manning</turn>
           </li>
           {{??}}
+          Aparently we've ran out of time and missions.
+          But please send the creator of this game
+          <a href='mailto:tomk32@gmail.com?subject=I%20want%20to%20talk%20about%20BOOBS'>a few lines of encouragement</a>
           {{?}}
         </ul>
         {{?}}
@@ -294,6 +303,7 @@
       </page>
       <page id='hallManning'>
         {{ playSound('teleporter'); }}
+        {{ playBackgroundSound('hall'); }}
         The teleport completes and Chelsea Manning, still waiting for a reply to her
         question, needs a few seconds to realize the change in light, air and location.
         <dl>
@@ -351,6 +361,7 @@
         </paragraph>
       </page>
       <page id='canteen'>
+        {{ seen('canteen'); }}
         Indeed the canteen, just through where the Professor and Manning left, looked
         older than the big Hall. I guess you have to make small steps when landing on the Moon.
         <br>
@@ -457,10 +468,11 @@
       return story.seen && story.seen[what];
     }
     sounds = {}
-    soundBase = 'sounds/'
+    soundBase = 'sounds/';
     function stopSound(file) {
-      if (window.sounds[file])
+      if (typeof(file) != 'undefined' && window.sounds[file]) {
         window.sounds[file].stop();
+      }
     }
     function playSound(file, options) {
       if (!window.sounds[file]) {
@@ -470,6 +482,11 @@
         }));
       }
       window.sounds[file].play();
+    }
+    function playBackgroundSound(file) {
+      stopSound(story.backgroundSound)
+      playSound(file, {loop: true})
+      story.backgroundSound = file
     }
   </script>
 </html>
