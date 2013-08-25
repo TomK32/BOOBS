@@ -28,6 +28,14 @@ a {
 }
 #footer {
   color: #222;
+  font-size: 16px;
+}
+#footer a {
+  padding: 4px 8px 0 8px;
+  border: 1px solid #000;
+}
+#footer a:hover {
+  background-color: #fff;
 }
 
 #wrapper {
@@ -44,6 +52,9 @@ a {
   text-decoration: none;
   border: none;
   color: #226;
+}
+#header h1 a {
+  color: #000;
 }
 #host {
   width: 550px;

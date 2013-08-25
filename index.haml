@@ -8,6 +8,7 @@
     %script{src: "http://ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js"}
     %script{src: "Dedalus/src/dedalus.js"}
     %script{src: "Dedalus/src/dedalus-web.js"}
+    %script{src: "lib/howler.min.js"}
 
     %link{rel: "stylesheet", href: "Dedalus/src/html/themes/thewriter/story.css"}
     %link{rel: "stylesheet", href: "boobs.css"}
@@ -15,8 +16,9 @@
     #story
       %initscript
         story.missions = {}
+        story.seen = {}
       %title
-        B.O.O.B.S. Saves the Day (r13)
+        B.O.O.B.S. Saves the Day (r14)
       %character#miller
         %action{id: 'What is this place?'}
           Hello Devi, this is the
@@ -86,18 +88,35 @@
           operational base on the moon, waiting for their time to change the world.
 
         %p
-          %em
-            As a sidenote: The author's first language is German, if you happen to find
-            gramatical errors feel free to keep them.
+          %em As a sidenote:
+          The author's first language is German, if you happen to find
+          gramatical errors feel free to keep them.
+          %br
+          The game is first a submission to
+          %a{href: 'http://ludumdare.com/compo'} Ludum Dare
+          compo. The theme was 10 seconds and you'll
+          find it referenced within the story. The game is also a submission to the
+          %a{href: 'http://theboobjam.com/'} Boob Jam
+          and yes, it's a text adventure.
+
       %page#start.first
         %p
           %turn{to: 'hall'} Go on, start the story.
 
       %page#hall
         %p
+          {{ stopSound('static'); }}
+          {{? !hasSeen('hall') }}
+          {{ seen('hall'); }}
+          {{ playSound('teleporter'); }}
           You've just been teleported from Earth into the moonbase's big Hall and a
           %interact{with: 'miller'} woman dressed in a white coat
           is ushering you off the teleporter platform.
+          {{??}}
+          You stand in the big Hall and you see
+          %interact{with: 'miller'} Professor Miller
+          working on some aparatus by the teleporters.
+          {{?}}
 
         %p
           The Hall has a huge glass ceiling showing nothing but blackness and stars,
@@ -108,9 +127,10 @@
           with a lot of workstation and monitors.
 
       %page#lookout
-        %img.right{src: 'images/lookout.jpg'}
+        {{ playSound('static', {loop: true}); }}
         You can see the Earth sneaking over the moon's horizon, all you see of Earth
         is a part of the Pacific Ocean.
+        %img{src: 'images/lookout.jpg', width: '500px'}
 
         %p
           Climb the stairs down
@@ -154,19 +174,17 @@
       %page#manning
         Okay Devi, we'll go over to the stationary
         %show{paragraph: 'howTeleportingWorks'} teleporters.
-        Two of our privates will join us, I can't send you alone on your first mission.
+        Private Roldóttir will join us, I can't send you alone on your first mission.
         %paragraph#howTeleportingWorks
-          Very easy bla bla bla.
-          %p
-            In order for a safe teleport we need to land in a room that is most likely empty.
-            That's the reason why we won't teleport directly into Manning's cell but outside of it.
-            We'll have to crack the lock but Private Roldóttir is an expert for that.
-          %p
-            %turn{to: 'militaryPrison'} Okay, let's teleport.
+          In order for a safe teleport we need to land in a room that is most likely empty.
+          That's the reason why we won't teleport directly into Manning's cell but outside of it.
+          We'll have to crack the lock but Private Roldóttir is an expert for that.
+          %br
+          %turn{to: 'militaryPrison'} Okay, let's teleport.
       %page#militaryPrison
         %character#rememberingProfMiller
           %action{id: 'Something about laser guns'}
-            I think she mentioned laser guns.
+            %em I think she mentioned laser guns.
             %br
             %em I'm sorry dear,
             Commander Kaur interrupts,
@@ -227,9 +245,8 @@
         Kaur's face for a nod and as Manning is finished they grab her hands and
         Manning's question
         %em And what's next?
-        fades in the empty cell as they teleport to the moon.
-        %p
-          %turn{to: 'hallManning'} Continue reading…
+        fades in the empty cell as they
+        %turn{to: 'hallManning'} teleport to the moon.
       %page#hallManning
         The teleport completes and Chelsea Manning, still waiting for a reply to her
         question, needs a few seconds to realize the change in light, air and location.
@@ -253,22 +270,26 @@
         The two leave the scene and
         %show{paragraph: 'debriefingRoldottir'} Cmd Kaur turns to the Private
         %paragraph#debriefingRoldottir
-          %br
-          %em
-            What was going on down there? I thought our last intel regarding the lock
-            was only a few days old.
-          %br
-          %em I don't know Commander, but the genetic lock looked like it was installed only yesterday.
-          %br
-          %em
-            Okay, we'll leave it at that. Dismissed Private.
-            %br
-            %show{paragraph: 'debriefingDevi'} Now Devi, your memory is still not fully recovered?
+          %dl
+            %dt Cmd Kaur
+            %dd
+              What was going on down there? I thought our last intel regarding the lock
+              was only a few days old.
+            %dt Roldóttir
+            %dd I don't know Commander, but the genetic lock looked like it was installed only yesterday.
+            %dt Cmd Kaur
+            %dd Okay, we'll leave it at that. Dismissed Private.
+            %dd
+              %show{paragraph: 'debriefingDevi'} Now Devi, your memory is still not fully recovered?
         %paragraph#debriefingDevi
-          %em No and I can't still imagine that I was involved in creating all this.
+          %em No,
+          you reply,
+          %em and I can't still imagine that I was involved in creating all this.
+          %br
+          %em Not just involved, Devi, you started it!
           %br
           %em
-            Not just involved, you all started it. Well, you must be hungry, the
+            Well, you must be hungry, the
             %turn{to: 'canteen'} canteen
             is one of the
             oldest facilities we have, maybe a visit there and a good meal will bring back some memories.
@@ -283,6 +304,12 @@
         from the bottom to the top of the four meter high walls. Outside you think you can see a
         a
         %show{paragraph: 'crashedSaucer'} crashed flying saucer.
+
+        %p
+          Return to the big
+          %turn{to: 'hall'} Hall
+          or the
+          %turn{to: 'missionControl'} Mission Control
 
         %paragraph#crashedSaucer
           There's nothing special about this one, you remember history lessons in school
@@ -303,7 +330,8 @@
 
     #wrapper
       #header
-        #title
+        %h1
+          %a#title{href: '/'}
         An
         %a{href: 'http://ananasblau.com/'}Ananasblau Games
         production.
@@ -363,5 +391,28 @@
             restoreTarget     : $('#restoreHost'),
             resetTarget       : $('#resetHost'),
         });
+        $('#restoreHost').click();
     });
+    function seen(what) {
+      if(!story.seen) { story.seen = {}; }
+      story.seen[what] = true;
+    }
+    function hasSeen(what) {
+      return story.seen && story.seen[what];
+    }
+    sounds = {}
+    soundBase = 'sounds/'
+    function stopSound(file) {
+      if (window.sounds[file])
+        window.sounds[file].stop();
+    }
+    function playSound(file, options) {
+      if (!window.sounds[file]) {
+        files = [soundBase + file + '.mp3', soundBase + file + '.ogg']
+        window.sounds[file] = new Howl($.extend(options, {
+          urls: files
+        }));
+      }
+      window.sounds[file].play();
+    }
 
