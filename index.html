@@ -139,14 +139,13 @@
       </page>
       <page id='kaurMissionControl'>
         <img class='right' src='images/character-kaur.jpg'>
-        <p>Hello Devi. How are, still recovering from your memory loss?</p>
+        <em>Hello Devi. How are, still recovering from your memory loss?</em>
         {{? !story.isInInventory('teleporter-bracelet') }}
-        <p>
-          You should go see
-          <turn to='hall'>Professor Miller</turn>
-          in the Hall and get a teleporter bracelet from her. Come back after you got the gun and
-          I might have a mission for you.
-        </p>
+        <br>
+        You should go see
+        <turn to='hall'>Professor Miller</turn>
+        in the Hall and get a teleporter bracelet from her. Come back after you got the gun and
+        I might have a mission for you.
         {{??}}
         <ul id='missions'>
           {{? !story.missions.manning }}
@@ -194,14 +193,16 @@
           Your second ever, well, as far as you can remember, teleport felt a lot easier
           than the last one. Perhaps it's just using the teleporter pads instead of the
           bracelet that makes the jumps feel more comfortable.
+          <show paragraph='two'>cont.</show>
         </p>
-        <p>
+        <paragraph id='two'>
           You are in a darkish, narrow corridor. You landed at what you consider the far end
           of the corridor, right in front of a door. Cmd Kaur knocks on the door and from
           inside the distinct but faint voice of Chelsa Manning asks who's there.
           <em>Yup, that's the right one. Hello Chelsea Manning, we're here to get you out.</em>
-        </p>
-        <p>
+          <show paragraph='three'>cont.</show>
+        </paragraph>
+        <paragraph id='three'>
           Private Roldóttir is already having a look at the electronic lock.
           <em>
             Commander, there's a little problem, it's not the lock I expected.
@@ -214,28 +215,28 @@
             Oh I see, I'm boring you with details.
             In short: We need someone with XY chromosoms to open this door.
           </em>
-          <show paragraph='xy'>The three of us, we are all women. What now?</show>
-        </p>
-        <paragraph id='xy'>
-          <dl class='dialog'>
-            <dt>Cmd Kaur</dt>
-            <dd>We couldn't just break through the door?</dd>
-            <dt>Private Roldóttir</dt>
-            <dd>No it's to heavy</dd>
-            <dt>Devi</dt>
-            <dd>How about teleporting?</dd>
-            <dt>Cmd Kaur</dt>
-            <dd>
-              No, our bracelets have only enough energy for one teleport, we do have a spare one,
-              but that's for Chelsea.
-            </dd>
-            <dt>Devi</dt>
-            <dd>
-              Oh wait a second, I remember
-              <interact with='rememberingProfMiller'>something Professor Miller said to me!</interact>
-            </dd>
-          </dl>
+          <turn to='gettingIntoTheCell'>The three of us, we are all women. What now?</turn>
         </paragraph>
+      </page>
+      <page id='gettingIntoTheCell'>
+        <dl class='dialog'>
+          <dt>Cmd Kaur</dt>
+          <dd>We couldn't just break through the door?</dd>
+          <dt>Private Roldóttir</dt>
+          <dd>No it's to heavy</dd>
+          <dt>Devi</dt>
+          <dd>How about teleporting?</dd>
+          <dt>Cmd Kaur</dt>
+          <dd>
+            No, our bracelets have only enough energy for one teleport, we do have a spare one,
+            but that's for Chelsea.
+          </dd>
+          <dt>Devi</dt>
+          <dd>
+            Oh wait a second, I remember
+            <interact with='rememberingProfMiller'>something Professor Miller said to me!</interact>
+          </dd>
+        </dl>
       </page>
       <page id='militaryPrisonCell'>
         The air inside the cell is surprisingly fresh, Manning standin at the far end
@@ -279,8 +280,55 @@
             Yes, the Moon. My name is Professor Miller, if you please would like to follow me,
             I bet you want to get some nicer clothes and try the best cantine this side of the Moon.
           </dd>
-          The two leave the scene
         </dl>
+        The two leave the scene and
+        <show paragraph='debriefingRoldottir'>Cmd Kaur turns to the Private</show>
+        <paragraph id='debriefingRoldottir'>
+          <br>
+          <em>
+            What was going on down there? I thought our last intel regarding the lock
+            was only a few days old.
+          </em>
+          <br>
+          <em>I don't know Commander, but the genetic lock looked like it was installed only yesterday.</em>
+          <br>
+          <em>
+            Okay, we'll leave it at that. Dismissed Private.
+            <br>
+            <show paragraph='debriefingDevi'>Now Devi, your memory is still not fully recovered?</show>
+          </em>
+        </paragraph>
+        <paragraph id='debriefingDevi'>
+          <em>No and I can't still imagine that I was involved in creating all this.</em>
+          <br>
+          <em>
+            Not just involved, you all started it. Well, you must be hungry, the
+            <turn to='canteen'>canteen</turn>
+            is one of the
+            oldest facilities we have, maybe a visit there and a good meal will bring back some memories.
+            You find me in the mission control when you are ready for the next operation.
+          </em>
+        </paragraph>
+      </page>
+      <page id='canteen'>
+        Indeed the canteen, just through where the Professor and Manning left, looked
+        older than the big Hall. I guess you have to make small steps when landing on the Moon.
+        <br>
+        On the left you see a self-service area. Tables of different size and comfy looking chairs take the
+        most of this rectangular hall. At the far side you see the only windows, some reaching
+        from the bottom to the top of the four meter high walls. Outside you think you can see a
+        a
+        <show paragraph='crashedSaucer'>crashed flying saucer.</show>
+        <paragraph id='crashedSaucer'>
+          There's nothing special about this one, you remember history lessons in school
+          about the
+          <a href='#' title='This is an alternative reality after all'>Area 51 incident</a>
+          how those poor aliens in their rather primitive
+          rescue pods crashed on earth. They didn't survive Earth's athmosphere for long
+          and President Eisenhower granted them a state funeral. Just in case their
+          relatives stopped by. But you can't remember any reports about a pod crashing
+          onto the Moon.
+        </paragraph>
       </page>
       <page id='barretBrown'></page>
       <page id='london'></page>
