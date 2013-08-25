@@ -18,7 +18,7 @@
         story.missions = {}
         story.seen = {}
       %title
-        B.O.O.B.S. Saves the Day (r15)
+        B.O.O.B.S. Saves the Day (r16)
       %character#miller
         %action{id: 'What is this place?'}
           Hello Devi, this is the
@@ -204,23 +204,25 @@
           bracelet that makes the jumps feel more comfortable.
           %show{paragraph: 'two'} cont.
         %paragraph#two
-          You are in a darkish, narrow corridor. You landed at what you consider the far end
-          of the corridor, right in front of a door. Cmd Kaur knocks on the door and from
-          inside the distinct but faint voice of Chelsa Manning asks who's there.
-          %em Yup, that's the right one. Hello Chelsea Manning, we're here to get you out.
-          %show{paragraph: 'three'} cont.
-        %paragraph#three
-          Private Roldóttir is already having a look at the electronic lock.
-          %em
-            Commander, there's a little problem, it's not the lock I expected.
-            They installed an additional electronic lock, specifically for male prisons,
-            the only lock on the planet that's doing super fast genetic tests.
-            Originally designed for Mormon households, adapted by a few states
-            to decrease bribery and prostitution in county prisons...
-          %em
-            Oh I see, I'm boring you with details.
-            In short: We need someone with XY chromosoms to open this door.
-          %turn{to: 'gettingIntoTheCell'} The three of us, we are all women. What now?
+          %img{src: 'images/prison-corridor.jpg', width: '500px'}
+          %p
+            You are in a darkish, narrow corridor. You landed at what you consider the far end
+            of the corridor, right in front of a door. Cmd Kaur knocks on the door and from
+            inside the distinct but faint voice of Chelsa Manning asks who's there.
+            %em Yup, that's the right one. Hello Chelsea Manning, we're here to get you out.
+            %turn{to: 'prisonDoor'} cont.
+      %page#prisonDoor
+        Private Roldóttir is already having a look at the electronic lock.
+        %em
+          Commander, there's a little problem, it's not the lock I expected.
+          They installed an additional electronic lock, specifically for male prisons,
+          the only lock on the planet that's doing super fast genetic tests.
+          Originally designed for Mormon households, adapted by a few states
+          to decrease bribery and prostitution in county prisons...
+        %em
+          Oh I see, I'm boring you with details.
+          In short: We need someone with XY chromosoms to open this door.
+        %turn{to: 'gettingIntoTheCell'} The three of us, we are all women. What now?
       %page#endPrison
         The three of you slam against the door, hit the electronic locks but to now prevail.
         In the process you damage your teleporter-bracelet and it gives a strong electric

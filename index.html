@@ -18,7 +18,7 @@
         story.seen = {}
       </initscript>
       <title>
-        B.O.O.B.S. Saves the Day (r15)
+        B.O.O.B.S. Saves the Day (r16)
       </title>
       <character id='miller'>
         <action id='What is this place?'>
@@ -222,27 +222,30 @@
           <show paragraph='two'>cont.</show>
         </p>
         <paragraph id='two'>
-          You are in a darkish, narrow corridor. You landed at what you consider the far end
-          of the corridor, right in front of a door. Cmd Kaur knocks on the door and from
-          inside the distinct but faint voice of Chelsa Manning asks who's there.
-          <em>Yup, that's the right one. Hello Chelsea Manning, we're here to get you out.</em>
-          <show paragraph='three'>cont.</show>
+          <img src='images/prison-corridor.jpg' width='500px'>
+          <p>
+            You are in a darkish, narrow corridor. You landed at what you consider the far end
+            of the corridor, right in front of a door. Cmd Kaur knocks on the door and from
+            inside the distinct but faint voice of Chelsa Manning asks who's there.
+            <em>Yup, that's the right one. Hello Chelsea Manning, we're here to get you out.</em>
+            <turn to='prisonDoor'>cont.</turn>
+          </p>
         </paragraph>
-        <paragraph id='three'>
-          Private Roldóttir is already having a look at the electronic lock.
-          <em>
-            Commander, there's a little problem, it's not the lock I expected.
-            They installed an additional electronic lock, specifically for male prisons,
-            the only lock on the planet that's doing super fast genetic tests.
-            Originally designed for Mormon households, adapted by a few states
-            to decrease bribery and prostitution in county prisons...
-          </em>
-          <em>
-            Oh I see, I'm boring you with details.
-            In short: We need someone with XY chromosoms to open this door.
-          </em>
-          <turn to='gettingIntoTheCell'>The three of us, we are all women. What now?</turn>
-        </paragraph>
+      </page>
+      <page id='prisonDoor'>
+        Private Roldóttir is already having a look at the electronic lock.
+        <em>
+          Commander, there's a little problem, it's not the lock I expected.
+          They installed an additional electronic lock, specifically for male prisons,
+          the only lock on the planet that's doing super fast genetic tests.
+          Originally designed for Mormon households, adapted by a few states
+          to decrease bribery and prostitution in county prisons...
+        </em>
+        <em>
+          Oh I see, I'm boring you with details.
+          In short: We need someone with XY chromosoms to open this door.
+        </em>
+        <turn to='gettingIntoTheCell'>The three of us, we are all women. What now?</turn>
       </page>
       <page id='endPrison'>
         The three of you slam against the door, hit the electronic locks but to now prevail.
