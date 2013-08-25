@@ -18,7 +18,7 @@
         story.missions = {}
         story.seen = {}
       %title
-        B.O.O.B.S. Saves the Day (r17)
+        B.O.O.B.S. Saves the Day (r18)
       %character#miller
         %action{id: 'What is this place?'}
           Hello Devi, this is the
@@ -157,7 +157,6 @@
           other instruments.
 
       %page#kaurMissionControl
-        %img.right{src: 'images/character-kaur.jpg'}
         %em Hello Devi. How are, still recovering from your memory loss?
         {{? !story.isInInventory('teleporter-bracelet') }}
         %br
@@ -205,6 +204,10 @@
             <when>!hasSeen('sex-change')</when>
             I think she said the force is strong with me, let's try
             %turn{to: 'endPrison'} break that dooor.
+          %action{id: "Nevermind: Let's abort the mission!"}
+            <when>!hasSeen('sex-change')</when>
+            It's no hope, we need to get back to base and think about a way to break the door.
+            %turn{to: 'hallManning'} Teleport back to the moon.
         %p
           {{ playSound('teleporter'); }}
           Your second ever, well, as far as you can remember, teleport felt a lot easier
@@ -268,9 +271,11 @@
         %em And what's next?
         fades in the empty cell as they
         %turn{to: 'hallManning'} teleport to the moon.
+        {{ story.missions.manning = true; }}
       %page#hallManning
         {{ playSound('teleporter'); }}
         {{ playBackgroundSound('hall'); }}
+        {{? story.missions.manning }}
         The teleport completes and Chelsea Manning, still waiting for a reply to her
         question, needs a few seconds to realize the change in light, air and location.
         %dl
@@ -292,6 +297,11 @@
             I bet you want to get some nicer clothes and try the best cantine this side of the Moon.
         The two leave the scene and
         %show{paragraph: 'debriefingRoldottir'} Cmd Kaur turns to the Private
+        {{??}}
+        You arrive at the Hall, the mission failed.
+        %br
+        %show{paragraph: 'debriefingRoldottir'} Cmd Kaur turns to the Private
+        {{?}}
         %paragraph#debriefingRoldottir
           %dl
             %dt Cmd Kaur

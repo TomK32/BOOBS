@@ -18,7 +18,7 @@
         story.seen = {}
       </initscript>
       <title>
-        B.O.O.B.S. Saves the Day (r17)
+        B.O.O.B.S. Saves the Day (r18)
       </title>
       <character id='miller'>
         <action id='What is this place?'>
@@ -167,7 +167,6 @@
         </p>
       </page>
       <page id='kaurMissionControl'>
-        <img class='right' src='images/character-kaur.jpg'>
         <em>Hello Devi. How are, still recovering from your memory loss?</em>
         {{? !story.isInInventory('teleporter-bracelet') }}
         <br>
@@ -222,6 +221,11 @@
             <when>!hasSeen('sex-change')</when>
             I think she said the force is strong with me, let's try
             <turn to='endPrison'>break that dooor.</turn>
+          </action>
+          <action id="Nevermind: Let's abort the mission!">
+            <when>!hasSeen('sex-change')</when>
+            It's no hope, we need to get back to base and think about a way to break the door.
+            <turn to='hallManning'>Teleport back to the moon.</turn>
           </action>
         </character>
         <p>
@@ -300,10 +304,12 @@
         <em>And what's next?</em>
         fades in the empty cell as they
         <turn to='hallManning'>teleport to the moon.</turn>
+        {{ story.missions.manning = true; }}
       </page>
       <page id='hallManning'>
         {{ playSound('teleporter'); }}
         {{ playBackgroundSound('hall'); }}
+        {{? story.missions.manning }}
         The teleport completes and Chelsea Manning, still waiting for a reply to her
         question, needs a few seconds to realize the change in light, air and location.
         <dl>
@@ -328,6 +334,11 @@
         </dl>
         The two leave the scene and
         <show paragraph='debriefingRoldottir'>Cmd Kaur turns to the Private</show>
+        {{??}}
+        You arrive at the Hall, the mission failed.
+        <br>
+        <show paragraph='debriefingRoldottir'>Cmd Kaur turns to the Private</show>
+        {{?}}
         <paragraph id='debriefingRoldottir'>
           <dl>
             <dt>Cmd Kaur</dt>
