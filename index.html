@@ -18,39 +18,55 @@
       <title>
         B.O.O.B.S. Saves the Day
       </title>
-      <character id='BOOBS'>
-        <action id='What boobs?'>
-          B.O.O.B.S., not boobs, is the name of the secret uptopian organization you've created.
-          Honestly we don't know what BorrOBS actually stands for, you never told us.
-        </action>
-      </character>
       <character id='miller'>
         <action id='What is this place?'>
           Hello Devi, this is the
-          <interact with='BOOBS'>B.O.O.B.S.</interact>
+          <show paragraph='BOOBS'>B.O.O.B.S.</show>
           secrect Moon base.
         </action>
         <action id='Who are you?'>
-          I'm Professor Angelica Miller, formerly a NASA rocket science.
-          But that's all become a bit redundent once you have a teleporter.
-          Now I'm head scientist up here.
+          I'm Professor Angelica Miller, B.O.O.B.S.' chief scientic officer,
+          formerly a
+          <show paragraph='rocketscience'>NASA rocket science.</show>
         </action>
         <action id='Why am I here?'>
-          <p>
-            You are here because years ago you had this place created by
-            robots using the teleporter you invented. But tragically you
-            lost your memory on one of your trips home and it took us quite
-            some while to find you again. And your sex-change before you lost your memory
-            didn't make our search easier.
-          </p>
-          <p>
-            Don't worry, your memory will come back to you.
-          </p>
-          <p>
-            In the meanwhile take this teleporter bracelet and go to Commander Kaur in the mission control.
-            {{ story.putInInventory('teleporter-bracelet'); }}
-          </p>
+          You are here because years ago you had this place created by
+          robots using the teleporter you invented. But tragically you
+          lost your memory on one of your trips home and it took us quite
+          some while to find you again. And your
+          <show paragraph='sexchange'>sex-change</show>
+          before you lost your memory
+          didn't make our search easier.
+          <br>
+          Don't worry, your memory will come back to you.
+          <br>
+          In the meanwhile take this teleporter bracelet and go to Commander Kaur in the mission control.
+          {{ story.putInInventory('teleporter-bracelet'); }}
         </action>
+        <paragraph id='rocketscience'>
+          Slightly impressed about the first rocket scienist you meet in your life, you ask
+          <em>I was teleported here, so where's the space rockets?</em>
+          <em>
+            Well, we don't have any. Looks like I took the wrong career path, but not all my
+            knowledge has become redundant, I'd like to think of myself as a hands-on
+            space scientist. That was before I started to hate this low gravity shit.
+          </em>
+        </paragraph>
+        <paragraph id='sexchange'>
+          <em>Wait, I had a sex change?</em>
+          you ask the professor.
+          <em>Yes, and if you managed to forget that, it must have been an excellent procedure.</em>
+          she replies.
+        </paragraph>
+        <paragraph id='BOOBS'>
+          <em>What boobs?</em>
+          you ask the professor, with a tiny grin in the back of your mind.
+          <em>
+            B.O.O.B.S., not boobs, is the name of the secret uptopian organization you've created.
+            Honestly we don't know what B.O.O.B.S. actually stands for, you never told us.
+            And stop grinning about your own terrible jokes.
+          </em>
+        </paragraph>
       </character>
       <beforeEveryThing></beforeEveryThing>
       <beforeEveryPageTurn></beforeEveryPageTurn>
@@ -238,16 +254,48 @@
         <em>And what's next?</em>
         fades in the empty cell as they teleport to the moon.
         <p>
-          <turn to='hall'>Continue reading…</turn>
+          <turn to='hallManning'>Continue reading…</turn>
         </p>
       </page>
+      <page id='hallManning'>
+        The teleport completes and Chelsea Manning, still waiting for a reply to her
+        question, needs a few seconds to realize the change in light, air and location.
+        <dl>
+          <dt>Manning</dt>
+          <dd>What the hell is going on?</dd>
+          <dt>Cmd Kaur</dt>
+          <dd>
+            Don't worry, you are save here. We are a secret organization which is trying
+            to change the world. And you're the first we rescued of the imprisoned hackers, journalists,
+            artists, well anyone who's in prison for speaking their mind or obeys orders
+            and follows their conscience.
+            <br>
+            Oh, and welcome to the Moon.
+          </dd>
+          <dt>Mannin</dt>
+          <dd>The Moon?</dd>
+          <dt>Professor Miller</dt>
+          <dd>
+            Yes, the Moon. My name is Professor Miller, if you please would like to follow me,
+            I bet you want to get some nicer clothes and try the best cantine this side of the Moon.
+          </dd>
+          The two leave the scene
+        </dl>
+      </page>
+      <page id='barretBrown'></page>
       <page id='london'></page>
       <page id='gulag'></page>
       <page id='rio'></page>
       <page id='tauCeti'></page>
     </div>
     <div id='wrapper'>
-      <div id='title'></div>
+      <div id='header'>
+        <div id='title'></div>
+        An
+        <a href='http://ananasblau.com/'>Ananasblau Games</a>
+        production.
+        <a href='http://ananasblau.com/subscribe_newsletter'>Subscribe the newsletter!</a>
+      </div>
       <div id='inventoryHostWrapper'>
         <h2>Inventory</h2>
         <div id='inventoryHost'></div>
@@ -282,11 +330,6 @@
   <div id='interactionHost'></div>
   <div id='undoStageHost'></div>
   <div id='footer'>
-    &copy; 2013
-    <a href='http://ananasblau.com/'>Ananasblau Games</a>
-    &bull;
-    <a href='http://ananasblau.com/subscribe_newsletter'>Subscribe the newsletter</a>
-    <br>
     <a href='#' id='undoHost'>Undo</a>
     &bull;
     <a href='#' id='saveHost'>Save</a>

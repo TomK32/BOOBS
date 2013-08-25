@@ -17,33 +17,47 @@
         story.missions = {}
       %title
         B.O.O.B.S. Saves the Day
-
-      %character#BOOBS
-        %action{id: 'What boobs?'}
-          B.O.O.B.S., not boobs, is the name of the secret uptopian organization you've created.
-          Honestly we don't know what BorrOBS actually stands for, you never told us.
-
       %character#miller
         %action{id: 'What is this place?'}
           Hello Devi, this is the
-          %interact{with: 'BOOBS'} B.O.O.B.S.
+          %show{paragraph: 'BOOBS'} B.O.O.B.S.
           secrect Moon base.
         %action{id: 'Who are you?'}
-          I'm Professor Angelica Miller, formerly a NASA rocket science.
-          But that's all become a bit redundent once you have a teleporter.
-          Now I'm head scientist up here.
+          I'm Professor Angelica Miller, B.O.O.B.S.' chief scientic officer,
+          formerly a
+          %show{paragraph: 'rocketscience'} NASA rocket science.
         %action{id: 'Why am I here?'}
-          %p
-            You are here because years ago you had this place created by
-            robots using the teleporter you invented. But tragically you
-            lost your memory on one of your trips home and it took us quite
-            some while to find you again. And your sex-change before you lost your memory
-            didn't make our search easier.
-          %p
-            Don't worry, your memory will come back to you.
-          %p
-            In the meanwhile take this teleporter bracelet and go to Commander Kaur in the mission control.
-            {{ story.putInInventory('teleporter-bracelet'); }}
+          You are here because years ago you had this place created by
+          robots using the teleporter you invented. But tragically you
+          lost your memory on one of your trips home and it took us quite
+          some while to find you again. And your
+          %show{paragraph: 'sexchange'} sex-change
+          before you lost your memory
+          didn't make our search easier.
+          %br
+          Don't worry, your memory will come back to you.
+          %br
+          In the meanwhile take this teleporter bracelet and go to Commander Kaur in the mission control.
+          {{ story.putInInventory('teleporter-bracelet'); }}
+        %paragraph#rocketscience
+          Slightly impressed about the first rocket scienist you meet in your life, you ask
+          %em I was teleported here, so where's the space rockets?
+          %em
+            Well, we don't have any. Looks like I took the wrong career path, but not all my
+            knowledge has become redundant, I'd like to think of myself as a hands-on
+            space scientist. That was before I started to hate this low gravity shit.
+        %paragraph#sexchange
+          %em Wait, I had a sex change?
+          you ask the professor.
+          %em Yes, and if you managed to forget that, it must have been an excellent procedure.
+          she replies.
+        %paragraph#BOOBS
+          %em What boobs?
+          you ask the professor, with a tiny grin in the back of your mind.
+          %em
+            B.O.O.B.S., not boobs, is the name of the secret uptopian organization you've created.
+            Honestly we don't know what B.O.O.B.S. actually stands for, you never told us.
+            And stop grinning about your own terrible jokes.
 
       %beforeEveryThing
 
@@ -209,7 +223,30 @@
         %em And what's next?
         fades in the empty cell as they teleport to the moon.
         %p
-          %turn{to: 'hall'} Continue reading…
+          %turn{to: 'hallManning'} Continue reading…
+      %page#hallManning
+        The teleport completes and Chelsea Manning, still waiting for a reply to her
+        question, needs a few seconds to realize the change in light, air and location.
+        %dl
+          %dt Manning
+          %dd What the hell is going on?
+          %dt Cmd Kaur
+          %dd
+            Don't worry, you are save here. We are a secret organization which is trying
+            to change the world. And you're the first we rescued of the imprisoned hackers, journalists,
+            artists, well anyone who's in prison for speaking their mind or obeys orders
+            and follows their conscience.
+            %br
+            Oh, and welcome to the Moon.
+          %dt Mannin
+          %dd The Moon?
+          %dt Professor Miller
+          %dd
+            Yes, the Moon. My name is Professor Miller, if you please would like to follow me,
+            I bet you want to get some nicer clothes and try the best cantine this side of the Moon.
+          The two leave the scene
+
+      %page#barretBrown
 
       %page#london
       %page#gulag
@@ -217,7 +254,12 @@
       %page#tauCeti
 
     #wrapper
-      #title
+      #header
+        #title
+        An
+        %a{href: 'http://ananasblau.com/'}Ananasblau Games
+        production.
+        %a{href: 'http://ananasblau.com/subscribe_newsletter'} Subscribe the newsletter!
 
       #inventoryHostWrapper
         %h2 Inventory
@@ -251,11 +293,6 @@
   #undoStageHost
 
   #footer
-    &copy; 2013
-    %a{href: 'http://ananasblau.com/'}Ananasblau Games
-    &bull;
-    %a{href: 'http://ananasblau.com/subscribe_newsletter'} Subscribe the newsletter
-    %br
     %a#undoHost{href: "#"} Undo
     &bull;
     %a#saveHost{href: "#"} Save
