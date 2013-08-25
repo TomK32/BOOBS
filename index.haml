@@ -199,6 +199,7 @@
             I think she said the force is strong with me, let's try
             %turn{to: 'endPrison'} break that dooor.
         %p
+          {{ playSound('teleporter'); }}
           Your second ever, well, as far as you can remember, teleport felt a lot easier
           than the last one. Perhaps it's just using the teleporter pads instead of the
           bracelet that makes the jumps feel more comfortable.
@@ -261,6 +262,7 @@
         fades in the empty cell as they
         %turn{to: 'hallManning'} teleport to the moon.
       %page#hallManning
+        {{ playSound('teleporter'); }}
         The teleport completes and Chelsea Manning, still waiting for a reply to her
         question, needs a few seconds to realize the change in light, air and location.
         %dl
