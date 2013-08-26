@@ -48,7 +48,7 @@
         <a href='http://theboobjam.com/'>Boob Jam</a>
         and yes, it's a text adventure.
         <br>
-        Overall, the scope of the story is no more than 1400 words, far less than
+        Overall, the scope of the story is roughly {{ out += countWords(); }} words, far less than
         I had hoped for but it has only one loose end where the next mission would
         start and I plan to write more of those.
         <br>
@@ -520,6 +520,14 @@
       stopSound(story.backgroundSound)
       playSound(file, {loop: true})
       story.backgroundSound = file
+    }
+    function countWords() {
+      return $('page').not('#intro').text()
+        .replace(/(^\s*)|(\s*$)/gi,"")
+        .replace(/\{\{.*?\}\}/g, '')
+        .replace(/[\r\n]+/g," ")
+        .replace(/[ \t]+/gi," ")
+        .split(' ').length ;
     }
   </script>
 </html>
